@@ -271,7 +271,7 @@ class ezcWorkflowDatabaseExecution extends ezcWorkflowExecution
      */
     protected function doGetSubExecution( $id = null )
     {
-        return new ezcWorkflowDatabaseExecution( $this->db, $id );
+        return new ezcWorkflowDatabaseExecution( $this->db, $id, $this->properties['options'] );
     }
 
     /**
