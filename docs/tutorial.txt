@@ -125,3 +125,37 @@ that starts in $workflow->finallyNode is activated.
    fill-column: 79
    End: 
    vim: et syn=rst tw=79
+
+Development
+=====
+
+Run unit tests
+------------------------------
+
+1. Open a terminal and change directory to zetacomponents/workflow-database-tiein
+
+2. Install development dependencies:
+
+    composer.phar --dev install
+
+3. Copy phpunit.xml.dist to phpunit.xml and add a child element under <phpunit>:
+
+    <php>
+        <const name="ZETA_TESTSUITE_DSN" value="mysql://dbuser:dbpassword@dbhost/dbname"/>
+    </php>
+
+4. Run phpunit:
+
+    vendor/bin/phpunit
+
+The output should be similar to:
+
+    PHPUnit 3.7.27 by Sebastian Bergmann.
+
+    Configuration read from ../path/zetacomponents/workflow-database-tiein/phpunit.xml
+
+    .....................................................
+
+    Time: 9.36 seconds, Memory: 8.25Mb
+
+    OK (52 tests, 132 assertions)

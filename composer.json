@@ -45,6 +45,10 @@
             "zetacomponents/base": "*"
         },
         "require-dev": {
-            "zetacomponents/unit-test": "*"
+            "phpunit/phpunit": "3.7.*",
+            "zetacomponents/unit-test": "dev-master",
+            "zetacomponents/workflow": "dev-master",
+            "zetacomponents/database-schema": "dev-master",
+            "zetacomponents/database": "dev-travis"
         }
 }
