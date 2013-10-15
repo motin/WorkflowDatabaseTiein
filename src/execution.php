@@ -63,11 +63,12 @@ class ezcWorkflowDatabaseExecution extends ezcWorkflowExecution
      *
      * This constructor is a tie-in.
      *
-     * @param  ezcDbHandler $db
-     * @param  int          $executionId
+     * @param  ezcDbHandler               $db
+     * @param  int                        $executionId
+     * @param  ezcWorkflowDatabaseOptions $workflowDatabaseOptions
      * @throws ezcWorkflowExecutionException
      */
-    public function __construct ( ezcDbHandler $db, $executionId = null )
+    public function __construct ( ezcDbHandler $db, $executionId = null, $workflowDatabaseOptions = null )
     {
         if ( $executionId !== null && !is_int( $executionId ) )
         {
@@ -76,7 +77,16 @@ class ezcWorkflowDatabaseExecution extends ezcWorkflowExecution
 
         $this->db = $db;
         $this->properties['definitionStorage'] = new ezcWorkflowDatabaseDefinitionStorage( $db );
-        $this->properties['options'] = new ezcWorkflowDatabaseOptions;
+
+        if ( $workflowDatabaseOptions instanceof ezcWorkflowDatabaseOptions )
+        {
+            $this->properties['options'] = $workflowDatabaseOptions;
+            $this->properties['definitionStorage']->options = $workflowDatabaseOptions;
+        }
+        else
+        {
+            $this->properties['options'] = new ezcWorkflowDatabaseOptions;
+        }
 
         if ( is_int( $executionId ) )
         {
