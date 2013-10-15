@@ -355,5 +355,14 @@ class ezcWorkflowDatabaseTieinExecutionTest extends ezcWorkflowDatabaseTieinTest
 
         $this->fail( 'Expected an ezcBaseValueException to be thrown.' );
     }
+
+    public function testProperties7()
+    {
+        $options   = new ezcWorkflowDatabaseOptions;
+        $execution = new ezcWorkflowDatabaseExecution( $this->db, null, $options );
+
+        $execution->options = $options;
+        $this->assertSame( $options, $execution->options );
+    }
 }
 ?>
